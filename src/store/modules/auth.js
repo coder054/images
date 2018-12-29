@@ -1,12 +1,14 @@
 import api from "../../api/imgur"
 import qs from "qs"
+import { router } from "../../main"
 
 const state = {
-	token: null
+	token: window.localStorage.getItem("imgur_token")
 }
 
 const getters = {
-	isLoggedIn: state => !!state.token
+	isLoggedIn: state => !!state.token,
+	token: state => state.token
 }
 
 const actions = {
@@ -15,15 +17,15 @@ const actions = {
 	},
 	logout({ commit }) {
 		commit("setToken", null) // the second parameter is the data of mutation
+		window.localStorage.removeItem("imgur_token")
 	},
 
 	finalizeLogin({ commit }, hash) {
-		alert(1)
-		console.log("hash: ", hash)
 		const query = qs.parse(hash.replace("#", ""))
-		console.log("query", query)
 
 		commit("setToken", query.access_token)
+		window.localStorage.setItem("imgur_token", query.access_token)
+		router.push("/")
 	}
 }
 
