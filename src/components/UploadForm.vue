@@ -1,9 +1,9 @@
 <template>
-	<div class="upload-wr">
-		<input type="file" @change="uploadImages($event.target.files)" multiple accept="image/*">
-		<span>Drag images here!</span>
+  <div class="upload-wr">
+    <input type="file" @change="uploadImages($event.target.files)" multiple accept="image/*">
+    <span>Drag images here!</span>
 
-	</div>
+  </div>
 </template>
 
 
@@ -12,8 +12,8 @@ import { mapActions } from 'vuex'
 
 
 export default {
-	name: 'UploadForm',
-	methods: mapActions(['uploadImages'])
+  name: 'UploadForm',
+  methods: mapActions(['uploadImages'])
 }
 
 </script>
@@ -21,25 +21,25 @@ export default {
 
 <style scoped>
 .upload-wr {
-	height: 30vh;
-	border: 2px dashed #999;
-	border-radius: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
+  height: 30vh;
+  border: 2px dashed #999;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .upload-wr:hover {
-	background-color: #eee;
+  background-color: #eee;
 }
 
 input {
-	border: 1px solid red;
-	width: 100%;
-	height: 30vh;
-	position: absolute;
-	opacity: 0
+  border: 1px solid red;
+  width: 100%;
+  height: 30vh;
+  position: absolute;
+  opacity: 0
 }
 
 </style>

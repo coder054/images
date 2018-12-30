@@ -1,0 +1,197 @@
+bat buoc co file src/main.js : la file chay dau tien
+
+
+
+
+trong file public/index.html co div#app
+
+
+
+muon dung component khac trong 1 component phai import, sau do dien vao property components
+
+
+
+
+
+reat! Now you can get started with the API!
+
+For public read-only and anonymous resources, such as getting image info, looking up user comments, etc. all you need to do is send an authorization header with your client_id in your requests. This also works if you'd like to upload images anonymously (without the image being tied to an account), or if you'd like to create an anonymous album. This lets us know which application is accessing the API.
+
+Authorization: Client-ID YOUR_CLIENT_ID
+
+For accessing a user's account, please visit the OAuth2 section of the docs.
+Client ID: ac39241553ecb4f
+Client secret: f2f56d2cd4a97e0a973a5bc5667736d0f2b5bebd
+
+
+
+
+
+double explanation operator: to convert a value to a boolean
+!!null // false
+!!"aa" // true
+
+
+
+
+
+https://api.imgur.com/oauth2/authorize?
+client_id=YOUR_CLIENT_ID&
+response_type=token&
+state=APPLICATION_STATE
+
+
+
+
+
+
+http://localhost:8080/oauth2/callback#access_token=c06afd7e948bdc4746d7be1adb565076aec95c9b&expires_in=315360000&token_type=bearer&refresh_token=725b35b7fa0201e06b122b71c7105a9e105bffda&account_username=WestMountain&account_id=74903627
+
+
+
+
+
+
+
+
+
+default cua vue-router la dung hash router
+
+
+
+
+
+mounted: khi render ra dom
+
+
+
+
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+	name: 'AuthHandler',
+	methods: mapActions(['finalizeLogin']),
+	created() {
+		this.finalizeLogin(window.location.hash) //xxxx
+	},
+	created: () => {
+		this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
+	}
+}
+
+</script>
+
+
+
+
+
+
+localStorage: duoc persist cho current domain (rieng cho moi domain), truy cap bang cach go localStorage trong console browser
+
+
+
+
+
+
+
+
+https://security.stackexchange.com/questions/174319/should-i-check-if-the-token-is-valid-each-time-a-user-navigates-on-my-app
+
+
+
+
+
+
+khi ta make request across domain thi se co mot method type la OPTION (cors request)
+
+
+
+
+
+Array.from(...)
+
+
+
+
+
+khi viet trong object cua component phai them this. , con trong <template> </template> thi k can
+<li> <router-link to="/backend"> {{$route.path}} </router-link> </li>
+//<script>
+//export default {
+//  name: 'About',
+//  created(){
+			console.log("this.$route.path", this.$route.path)
+//  }
+//}
+//</script>
+
+
+
+
+
+
+
+
+
+khi su dung vue router, o bat cu component nao ta cung co the truy cap vao bien $route
+
+
+
+
+
+all Vue components are also Vue instances, and so accept the same options object (except for a few root-specific options).
+
+
+
+
+
+
+The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the v-html directive:
+
+
+
+
+
+
+
+xxxx Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive:
+
+<div v-bind:id="dynamicId"></div>
+<div id="dynamicId"></div> // khong viet ntn
+
+
+
+
+
+
+
+neu path ma khong co "/" o dau tien
+"about/backend" (khac voi "/about/backend")
+thi khi nhan vao doan url tren se cong vao url cua component hien tai
+
+
+
+
+
+
+Chi co 2 shorthand cua directive ma thoi
+v-bind Shorthand
+<!-- full syntax -->
+<a v-bind:href="url"> ... </a>
+
+<!-- shorthand -->
+<a :href="url"> ... </a>
+
+
+v-on Shorthand
+<!-- full syntax -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- shorthand -->
+<a @click="doSomething"> ... </a>
+
+
+
+https://www.dkn.tv/doi-song/song-tren-hon-dao-truong-tho-sau-25-nam-bi-chan-doan-ung-thu-va-bi-quyet-cua-cu-dan-tren-dao.html
+

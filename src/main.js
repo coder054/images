@@ -4,6 +4,9 @@ import VueRouter from "vue-router"
 import AuthHandler from "./components/AuthHandler"
 import ImageList from "./components/ImageList"
 import UploadForm from "./components/UploadForm"
+import About from "./components/About"
+import Frontend from "./components/About-child-component/Frontend"
+import Backend from "./components/About-child-component/Backend"
 import store from "./store"
 
 Vue.use(VueRouter)
@@ -12,6 +15,14 @@ export const router = new VueRouter({
 	routes: [
 		{ path: "/oauth2/callback", component: AuthHandler },
 		{ path: "/upload", component: UploadForm },
+		{
+			path: "/about",
+			component: About,
+			children: [
+				{ path: "frontend", component: Frontend },
+				{ path: "backend", component: Backend }
+			]
+		},
 		{ path: "/", component: ImageList }
 	]
 })

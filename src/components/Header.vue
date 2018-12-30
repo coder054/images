@@ -11,6 +11,9 @@
 			<router-link to="/upload" class="ui item" v-if="isLoggedIn">
 				Upload
 			</router-link>
+			<router-link to="/about" class="ui item">
+				About
+			</router-link>
 			<a class="ui item" @click="logout" v-if="isLoggedIn">
 				Logout
 			</a>

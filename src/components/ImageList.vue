@@ -1,17 +1,16 @@
 <template>
-
 	<div>
-		<div>
-			<select v-model="column">
+		<div class="select-column-wr" v-if="isLoggedIn">
+			<span class="select-colum-label"> Select number of Columns: </span>
+			<select class="select-column" v-model="column">
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
 			</select>
-			<span>Columns: {{ column }}</span>
 		</div>
 
 		<div :style="{columnCount: column }" v-if="isLoggedIn" class="img-wrapper">
-			<img v-for="image in images" :src="image.link">
+			<img v-for="image in images" :src="image.link" :key="image.link">
 		</div>
 			<h2 v-else> Login to get started! </h2>
 
@@ -40,12 +39,10 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 
 .img-wrapper {
-	
 	column-gap: 0;
-
 }
 
 
@@ -54,4 +51,11 @@ export default {
 	padding: 5px;
 }
 
+.select-column-wr{
+	margin: 20px 0;
+}
+
+.select-colum-label{
+	margin-right: 10px;
+}
 </style>
