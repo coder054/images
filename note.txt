@@ -70,14 +70,14 @@ mounted: khi render ra dom
 <script>
 import { mapActions } from 'vuex'
 export default {
-	name: 'AuthHandler',
-	methods: mapActions(['finalizeLogin']),
-	created() {
-		this.finalizeLogin(window.location.hash) //xxxx
-	},
-	created: () => {
-		this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
-	}
+  name: 'AuthHandler',
+  methods: mapActions(['finalizeLogin']),
+  created() {
+    this.finalizeLogin(window.location.hash) //xxxx
+  },
+  created: () => {
+    this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
+  }
 }
 
 </script>
@@ -121,7 +121,7 @@ khi viet trong object cua component phai them this. , con trong <template> </tem
 //export default {
 //  name: 'About',
 //  created(){
-			console.log("this.$route.path", this.$route.path)
+      console.log("this.$route.path", this.$route.path)
 //  }
 //}
 //</script>
@@ -195,3 +195,34 @@ v-on Shorthand
 
 https://www.dkn.tv/doi-song/song-tren-hon-dao-truong-tho-sau-25-nam-bi-chan-doan-ung-thu-va-bi-quyet-cua-cu-dan-tren-dao.html
 
+
+
+
+
+
+
+Vue provides special enhancements when v-bind is used with class and style. In addition to strings, the expressions can also evaluate to objects or arrays.
+
+
+
+
+
+When you use the class attribute on a custom component, those classes will be added to the component’s root element. Existing classes on this element will not be overwritten.
+
+
+
+
+
+
+xxxx access (view, modify) vuex state from console
+document.getElementsByTagName('a')[0].__vue__.$store.state
+document.getElementsByTagName('a')[0].__vue__.$store.state.images.images // array 8 elements
+document.getElementsByTagName('a')[0].__vue__.$store.state.images.images = [] // now array is empty
+see more : https://stackoverflow.com/questions/43461338/is-vuex-store-accessible-from-console-or-from-clients-browser
+
+
+
+
+you CAN Put logic in v-if  xxxx
+v-if="!hasImage"
+v-if="isLoggedIn && hasImage"

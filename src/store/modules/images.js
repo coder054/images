@@ -2,12 +2,14 @@ import api from "../../api/imgur"
 import { router } from "../../main"
 
 const state = {
-	images: []
+	images: [],
+	isLoadingComplete: false
 }
 
 const getters = {
 	images: state => state.images,
-	column: state => state.column
+	column: state => state.column,
+	isLoadingComplete: state => state.isLoadingComplete
 }
 
 const actions = {
@@ -18,6 +20,7 @@ const actions = {
 			data: { data }
 		} = result
 		commit("setImages", data)
+		commit("setLoadingComplete", true)
 	},
 
 	async uploadImages({ rootState }, images) {
@@ -35,6 +38,9 @@ const actions = {
 const mutations = {
 	setImages(state, images) {
 		state.images = images
+	},
+	setLoadingComplete(state, complete) {
+		state.isLoadingComplete = complete
 	}
 }
 

@@ -1,11 +1,11 @@
 <template>
-	<div> Vue, vue router, vuex, semantic ui </div>
+  <div> Vue, vue router, vuex, semantic ui </div>
 </template>
 
 
 <script>
 export default {
-	name: 'Frontend'
+  name: 'Frontend'
 }
 
 </script>
