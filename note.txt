@@ -257,3 +257,10 @@ get1: ({ commit, dispatch }) => {
 
 
 "trailingComma": "es5", // se them dau "," vao cap key:value cuoi cung trong object
+
+
+
+
+
+
+https://medium.com/techtrument/build-a-video-player-like-youtube-in-vuejs-webpack-and-flexbox-b51ef9bede0b

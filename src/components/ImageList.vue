@@ -1,7 +1,7 @@
 <template>
 
 	<div>
-		<Modal>  </Modal>
+		<Modal v-if="isLoggedIn && hasImage">  </Modal>
 		<div class="select-column-wr" v-if="isLoggedIn && hasImage">
 			<span class="select-colum-label"> Select number of Columns: </span>
 			<select class="select-column" v-model="column">
@@ -10,13 +10,15 @@
 				<option>4</option>
 			</select>
 		</div>
-		<h3 v-if="!isLoadingComplete"> ... Loading Images ... </h3>
+		<h3 v-if="!isLoadingComplete && isLoggedIn"> ... Loading Images ... </h3>
 		<h3 v-if="!hasImage && isLoadingComplete"> You don't upload nay images yet, let <router-link class="upload-link" to="/upload"> upload </router-link> some images! </h3>
 
-		<div :style="{columnCount: column }" v-if="isLoggedIn" class="img-wrapper">
+		<div 
+		:style="{columnCount: column }" v-if="isLoggedIn && hasImage && isLoadingComplete"
+		 class="img-wrapper">
 			<img @click="clickImage(index)" v-for="(image, index) in images" :data-index="index" :src="image.link" :key="image.link">
 		</div>
-			<h2 v-else> Login to get started! </h2>
+			<h2 v-if="!isLoggedIn"> Login to get started! </h2>
 
 		</div>
 </template>
