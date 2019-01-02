@@ -70,14 +70,14 @@ mounted: khi render ra dom
 <script>
 import { mapActions } from 'vuex'
 export default {
-	name: 'AuthHandler',
-	methods: mapActions(['finalizeLogin']),
-	created() {
-		this.finalizeLogin(window.location.hash) //xxxx
-	},
-	created: () => {
-		this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
-	}
+  name: 'AuthHandler',
+  methods: mapActions(['finalizeLogin']),
+  created() {
+    this.finalizeLogin(window.location.hash) //xxxx
+  },
+  created: () => {
+    this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
+  }
 }
 
 </script>
@@ -121,7 +121,7 @@ khi viet trong object cua component phai them this. , con trong <template> </tem
 //export default {
 //  name: 'About',
 //  created(){
-			console.log("this.$route.path", this.$route.path)
+      console.log("this.$route.path", this.$route.path)
 //  }
 //}
 //</script>

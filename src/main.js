@@ -8,8 +8,10 @@ import About from "./components/About"
 import Frontend from "./components/About-child-component/Frontend"
 import Backend from "./components/About-child-component/Backend"
 import store from "./store"
+import SuiVue from "semantic-ui-vue"
 
 Vue.use(VueRouter)
+Vue.use(SuiVue)
 export const router = new VueRouter({
 	mode: "history", // to use browser router (default is hash router)
 	routes: [

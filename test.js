@@ -7,7 +7,7 @@ const a = {
 
 	gg() {
 		console.log(this.name() + "is handsiome!" + this.age)
-	}
+	},
 }
 
 a.gg()

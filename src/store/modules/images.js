@@ -5,9 +5,11 @@ import { getdateAndTimeFromDateString } from "../helpers/time"
 const state = {
 	images: [],
 	isLoadingComplete: false,
+	isUploading: false,
 	imageIndex: 0,
 	bandwidth: 0,
 	datetime: 0,
+	open: false,
 }
 
 const getters = {
@@ -33,6 +35,8 @@ const getters = {
 		let datetimeString = state.images[state.imageIndex].datetime
 		return getdateAndTimeFromDateString(datetimeString)
 	},
+	openn: state => state.open,
+	isUploading: state => state.isUploading,
 }
 
 const actions = {
@@ -47,7 +51,8 @@ const actions = {
 		commit("setLoadingComplete", true)
 	},
 
-	async uploadImages({ rootState }, images) {
+	async uploadImages({ rootState, commit }, images) {
+		commit("setUploading", true)
 		const { token } = rootState.auth
 		// filter only image files
 		const imagesOnly = Array.from(images).filter(image =>
@@ -56,19 +61,14 @@ const actions = {
 
 		await api.uploadImages(imagesOnly, token)
 		// commit("setImageIndex", 0)
+		commit("setUploading", false)
 		router.push("/")
-		window.location.reload()
+		// window.location.reload()
 	},
 
 	clickImage({ commit, dispatch }, index) {
 		commit("setImageIndex", index)
-		setTimeout(function() {
-			dispatch("showModal")
-		}, 150)
-	},
-
-	showModal() {
-		$(".ui.modal").modal("show")
+		dispatch("toggle")
 	},
 
 	nextImage({ commit }) {
@@ -77,6 +77,10 @@ const actions = {
 
 	prevImage({ commit }) {
 		commit("prevIndex")
+	},
+
+	toggle({ commit }) {
+		commit("toggle")
 	},
 }
 
@@ -97,6 +101,14 @@ const mutations = {
 
 	prevIndex(state) {
 		state.imageIndex = state.imageIndex - 1
+	},
+
+	toggle(state) {
+		state.open = !state.open
+	},
+
+	setUploading(state, a) {
+		state.isUploading = a
 	},
 }
 
