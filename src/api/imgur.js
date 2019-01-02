@@ -1,10 +1,19 @@
 import qs from "qs"
 import axios from "axios"
-const CLIENT_ID = "ac39241553ecb4f"
 const ROOT_URL = "https://api.imgur.com"
+var CLIENT_ID
+
+if (process.env.NODE_ENV === "production") {
+	CLIENT_ID = "d48b6c25da6f38a"
+} else {
+	CLIENT_ID = "ac39241553ecb4f"
+}
 
 export default {
 	login() {
+		console.log("loginnnnnnnnn")
+		console.log(process.env.NODE_ENV)
+		console.log(process.env.BASE_URL)
 		const queryString = {
 			client_id: CLIENT_ID,
 			response_type: "token",
