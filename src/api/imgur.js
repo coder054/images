@@ -11,8 +11,6 @@ if (process.env.NODE_ENV === "production") {
 
 export default {
 	login() {
-		console.log(process.env.NODE_ENV)
-		console.log(process.env.BASE_URL)
 		const queryString = {
 			client_id: CLIENT_ID,
 			response_type: "token",
@@ -44,6 +42,14 @@ export default {
 		})
 
 		return Promise.all(promises)
+	},
+
+	async deleteImage(imageHash, token) {
+		return axios.delete(`${ROOT_URL}/3/image/${imageHash}`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
 	},
 }
 

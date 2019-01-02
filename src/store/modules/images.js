@@ -10,6 +10,7 @@ const state = {
 	bandwidth: 0,
 	datetime: 0,
 	open: false,
+	deletehash: "",
 }
 
 const getters = {
@@ -37,6 +38,8 @@ const getters = {
 	},
 	openn: state => state.open,
 	isUploading: state => state.isUploading,
+	deletehash: state => state.deletehash,
+	isAskingForDelete: state => !!state.deletehash,
 }
 
 const actions = {
@@ -82,6 +85,17 @@ const actions = {
 	toggle({ commit }) {
 		commit("toggle")
 	},
+
+	async deleteImage({ rootState, dispatch, commit }, imageHash) {
+		const { token } = rootState.auth
+		await api.deleteImage(imageHash, token)
+		commit("setDeleteHash", "")
+		dispatch("fetchImages")
+	},
+
+	setDeleteHash({ commit }, hash) {
+		commit("setDeleteHash", hash)
+	},
 }
 
 const mutations = {
@@ -109,6 +123,10 @@ const mutations = {
 
 	setUploading(state, a) {
 		state.isUploading = a
+	},
+
+	setDeleteHash(state, hash) {
+		state.deletehash = hash
 	},
 }
 
