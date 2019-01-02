@@ -14,6 +14,7 @@ Vue.use(VueRouter)
 Vue.use(SuiVue)
 export const router = new VueRouter({
 	mode: "history", // to use browser router (default is hash router)
+	base: "/images/",
 	routes: [
 		{ path: "/oauth2/callback", component: AuthHandler },
 		{ path: "/upload", component: UploadForm },

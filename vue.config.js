@@ -1,3 +1,3 @@
 module.exports = {
-	baseUrl: "/images2/",
+	baseUrl: "/images/",
 }

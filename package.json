@@ -2,7 +2,7 @@
 	"name": "images-vue",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://coder054.github.io/images2/",
+	"homepage": "https://coder054.github.io/images/",
 
 	"scripts": {
 		"serve": "vue-cli-service serve",
