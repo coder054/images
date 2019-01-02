@@ -20,15 +20,15 @@ export const router = new VueRouter({
 			component: About,
 			children: [
 				{ path: "frontend", component: Frontend },
-				{ path: "backend", component: Backend }
-			]
+				{ path: "backend", component: Backend },
+			],
 		},
-		{ path: "/", component: ImageList }
-	]
+		{ path: "/", component: ImageList },
+	],
 })
 
 new Vue({
 	router,
 	store,
-	render: h => h(App)
+	render: h => h(App),
 }).$mount("#app")

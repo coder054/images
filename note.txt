@@ -70,14 +70,14 @@ mounted: khi render ra dom
 <script>
 import { mapActions } from 'vuex'
 export default {
-  name: 'AuthHandler',
-  methods: mapActions(['finalizeLogin']),
-  created() {
-    this.finalizeLogin(window.location.hash) //xxxx
-  },
-  created: () => {
-    this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
-  }
+	name: 'AuthHandler',
+	methods: mapActions(['finalizeLogin']),
+	created() {
+		this.finalizeLogin(window.location.hash) //xxxx
+	},
+	created: () => {
+		this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
+	}
 }
 
 </script>
@@ -121,7 +121,7 @@ khi viet trong object cua component phai them this. , con trong <template> </tem
 //export default {
 //  name: 'About',
 //  created(){
-      console.log("this.$route.path", this.$route.path)
+			console.log("this.$route.path", this.$route.path)
 //  }
 //}
 //</script>
@@ -226,3 +226,34 @@ see more : https://stackoverflow.com/questions/43461338/is-vuex-store-accessible
 you CAN Put logic in v-if  xxxx
 v-if="!hasImage"
 v-if="isLoggedIn && hasImage"
+
+
+
+
+
+
+goi mot action trong mot action khac'
+
+vi du co 2 action
+get1: ({commit}) => {
+  //things
+  this.get2(); //this is my question!
+},
+get2: ({commit}) => {
+  //things
+},
+
+=>>>>>>>>>>>
+get1: ({ commit, dispatch }) => {
+  dispatch('get2');
+},
+
+
+
+
+
+
+
+
+
+"trailingComma": "es5", // se them dau "," vao cap key:value cuoi cung trong object

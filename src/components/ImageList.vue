@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Modal>  </Modal>
     <div class="select-column-wr" v-if="isLoggedIn && hasImage">
       <span class="select-colum-label"> Select number of Columns: </span>
       <select class="select-column" v-model="column">
@@ -12,7 +13,7 @@
     <h3 v-if="!hasImage && isLoadingComplete"> You don't upload nay images yet, let <router-link class="upload-link" to="/upload"> upload </router-link> some images! </h3>
 
     <div :style="{columnCount: column }" v-if="isLoggedIn" class="img-wrapper">
-      <img v-for="image in images" :src="image.link" :key="image.link">
+      <img @click="clickImage(index)" v-for="(image, index) in images" :data-index="index" :src="image.link" :key="image.link">
     </div>
       <h2 v-else> Login to get started! </h2>
 
@@ -21,6 +22,7 @@
 
 
 <script>
+import Modal from "./Modal"
 import { mapActions, mapGetters } from 'vuex'
 
 
@@ -28,16 +30,23 @@ export default {
   name: 'ImageList',
   data() {
     return {
-      column: 4
+      column: 4,
+      
     }
   },
+  components: {
+    Modal
+  }
+  ,
   computed: {
     hasImage (){
       return !!this.images.length
     } ,
-    ...mapGetters(['images', 'isLoggedIn', 'isLoadingComplete'])
+    ...mapGetters(['images', 'isLoggedIn', 'isLoadingComplete', 'image', 'isMaxIndex', 'imageIndex'])
   },
-  methods: mapActions(['fetchImages']),
+  methods: {
+    ...mapActions(['fetchImages', 'showModal', 'clickImage'])
+  },
   created() {
     this.fetchImages()
   }
