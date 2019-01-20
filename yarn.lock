@@ -7510,6 +7510,11 @@ vue-eslint-parser@^4.0.2:
     esquery "^1.0.1"
     lodash "^4.17.11"
 
+vue-hoc@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/vue-hoc/-/vue-hoc-0.4.6.tgz#6ef5d8b5be9e964fd60bc91654fa548c9c601704"
+  integrity sha512-PwLhDE/5JPjH6BHLYwKWVc5S2l6yfswVanQQ7nlzrUVebgI4bs7vdKtw3K0Ygjwa9eaPpInX0EZqPUl3nO8o+Q==
+
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.1.tgz#b2d3d95402a811602380783ea4f566eb875569a2"

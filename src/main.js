@@ -10,6 +10,7 @@ import Backend from "./components/About-child-component/Backend"
 import NotFound from "./components/NotFound"
 import store from "./store"
 import SuiVue from "semantic-ui-vue"
+import requireAuth from "./HOCs/requireAuth"
 
 Vue.use(VueRouter)
 Vue.use(SuiVue)
@@ -17,7 +18,7 @@ export const router = new VueRouter({
 	mode: "history", // to use browser router (default is hash router)
 	routes: [
 		{ path: "/oauth2/callback", component: AuthHandler },
-		{ path: "/upload", component: UploadForm },
+		{ path: "/upload", component: requireAuth(UploadForm) },
 		{
 			path: "/about",
 			component: About,

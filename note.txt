@@ -70,14 +70,14 @@ mounted: khi render ra dom
 <script>
 import { mapActions } from 'vuex'
 export default {
-  name: 'AuthHandler',
-  methods: mapActions(['finalizeLogin']),
-  created() {
-    this.finalizeLogin(window.location.hash) //xxxx
-  },
-  created: () => {
-    this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
-  }
+	name: 'AuthHandler',
+	methods: mapActions(['finalizeLogin']),
+	created() {
+		this.finalizeLogin(window.location.hash) //xxxx
+	},
+	created: () => {
+		this.finalizeLogin(window.location.hash)  // xxxx "this" o day la undefined -> khong dung
+	}
 }
 
 </script>
@@ -121,7 +121,7 @@ khi viet trong object cua component phai them this. , con trong <template> </tem
 //export default {
 //  name: 'About',
 //  created(){
-      console.log("this.$route.path", this.$route.path)
+			console.log("this.$route.path", this.$route.path)
 //  }
 //}
 //</script>
@@ -236,16 +236,16 @@ goi mot action trong mot action khac'
 
 vi du co 2 action
 get1: ({commit}) => {
-  //things
-  this.get2(); //this is my question!
+	//things
+	this.get2(); //this is my question!
 },
 get2: ({commit}) => {
-  //things
+	//things
 },
 
 =>>>>>>>>>>>
 get1: ({ commit, dispatch }) => {
-  dispatch('get2');
+	dispatch('get2');
 },
 
 
@@ -264,3 +264,13 @@ get1: ({ commit, dispatch }) => {
 
 
 https://medium.com/techtrument/build-a-video-player-like-youtube-in-vuejs-webpack-and-flexbox-b51ef9bede0b
+
+
+
+
+
+
+
+
+
+ <slot></slot> in vue is {this.props.children} in react

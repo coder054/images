@@ -1,11 +1,11 @@
 <template>
-  <h3 class="app-wrapper"> The page is not founded! </h3>
+	<h3 class="app-wrapper"> The page is not founded! </h3>
 </template>
 
 
 <script>
 export default {
-  name: 'NotFound'
+	name: 'NotFound'
 }
 
 </script>
