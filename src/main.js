@@ -7,6 +7,7 @@ import UploadForm from "./components/UploadForm"
 import About from "./components/About"
 import Frontend from "./components/About-child-component/Frontend"
 import Backend from "./components/About-child-component/Backend"
+import NotFound from "./components/NotFound"
 import store from "./store"
 import SuiVue from "semantic-ui-vue"
 
@@ -26,6 +27,7 @@ export const router = new VueRouter({
 			],
 		},
 		{ path: "/", component: ImageList },
+		{ path: "*", component: NotFound },
 	],
 })
 
