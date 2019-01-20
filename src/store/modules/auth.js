@@ -18,6 +18,7 @@ const actions = {
 	logout({ commit }) {
 		commit("setToken", null) // the second parameter is the data of mutation
 		window.localStorage.removeItem("imgur_token")
+		router.push("/")
 	},
 
 	finalizeLogin({ commit }, hash) {
