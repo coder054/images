@@ -274,3 +274,61 @@ https://medium.com/techtrument/build-a-video-player-like-youtube-in-vuejs-webpac
 
 
  <slot></slot> in vue is {this.props.children} in react
+
+
+
+
+ if you need to pass multiple parameter to vuex action, don't do that
+ setter({ commit }, propertyName, value) {
+		commit("setter", propertyName, value)
+	},
+
+	you should do that
+	 setter({ commit }, {propertyName, value}) {
+		commit("setter", propertyName, value)
+	},
+
+
+
+
+
+
+you can access event object via $event
+@input="setter({propertyName: 'description', value: $event.target.value })"
+@input="handleChange"
+
+handleChange(e){
+	// $event o tren chinh la e o day
+}
+
+
+
+
+
+
+
+https://stackoverflow.com/questions/46210109/how-do-i-call-a-getter-from-another-getter-in-vuex
+
+
+
+
+
+
+
+
+
+ta co the commit mot mutation cua another module, va cung co the dispatch mot action cua module khac
+commit("togglee", "showNoti") // tronmg image module // togglee la mutation cua UIHelpers module
+dispatch("togglee", "showNoti")
+
+
+
+
+
+
+
+
+
+
+
+

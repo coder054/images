@@ -9,8 +9,11 @@ const state = {
 	imageIndex: 0,
 	bandwidth: 0,
 	datetime: 0,
-	open: false,
+	openStateForModalViewImage: false,
 	deletehash: "",
+	openStateForModalEditTitleAndDesc: false,
+	title: "",
+	description: "",
 }
 
 const getters = {
@@ -28,18 +31,22 @@ const getters = {
 	isMaxIndex: state => {
 		return state.imageIndex == state.images.length - 1
 	},
-	bandwidth: state => {
-		let x = (state.images[state.imageIndex].bandwidth / 1024 / 1024).toFixed(2)
+	bandwidth: (state, { image }) => {
+		let x = (image.bandwidth / 1024 / 1024).toFixed(2)
 		return x.toString() + " MB"
 	},
-	datetime: state => {
-		let datetimeString = state.images[state.imageIndex].datetime
+	datetime: (state, { image }) => {
+		let datetimeString = image.datetime
 		return getdateAndTimeFromDateString(datetimeString)
 	},
-	openn: state => state.open,
+	openStateForModalViewImage: state => state.openStateForModalViewImage,
+	openStateForModalEditTitleAndDesc: state =>
+		state.openStateForModalEditTitleAndDesc,
 	isUploading: state => state.isUploading,
 	deletehash: state => state.deletehash,
 	isAskingForDelete: state => !!state.deletehash,
+	title: state => state.title,
+	description: state => state.description,
 }
 
 const actions = {
@@ -71,19 +78,30 @@ const actions = {
 
 	clickImage({ commit, dispatch }, index) {
 		commit("setImageIndex", index)
-		dispatch("toggle")
+		dispatch("toggle", "openStateForModalViewImage")
+		dispatch("setTitleAndDesc")
 	},
 
-	nextImage({ commit }) {
+	setTitleAndDesc({ commit, rootGetters }) {
+		commit("setter", { propertyName: "title", value: rootGetters.image.title })
+		commit("setter", {
+			propertyName: "description",
+			value: rootGetters.image.description,
+		})
+	},
+
+	nextImage({ commit, dispatch }) {
 		commit("nextIndex")
+		dispatch("setTitleAndDesc")
 	},
 
-	prevImage({ commit }) {
+	prevImage({ commit, dispatch }) {
 		commit("prevIndex")
+		dispatch("setTitleAndDesc")
 	},
 
-	toggle({ commit }) {
-		commit("toggle")
+	toggle({ commit }, propertyName) {
+		commit("toggle", propertyName)
 	},
 
 	async deleteImage({ rootState, dispatch, commit }, imageHash) {
@@ -93,8 +111,30 @@ const actions = {
 		dispatch("fetchImages")
 	},
 
+	async editTitleAndDesc(
+		{ rootState, dispatch, commit },
+		{ imageHash, title, description }
+	) {
+		const { token } = rootState.auth
+		await api.editTitleAndDesc(imageHash, title, description, token)
+		dispatch("fetchImages")
+		commit("toggle", "openStateForModalEditTitleAndDesc")
+		commit("toggle", "openStateForModalViewImage")
+		commit("setterr", {
+			propertyName: "notiContent",
+			value: "Updated Title and Description!",
+		})
+		commit("togglee", "showNoti")
+
+		commit("setter", { propertyName: "title", value: "" })
+		commit("setter", { propertyName: "description", value: "" })
+	},
 	setDeleteHash({ commit }, hash) {
 		commit("setDeleteHash", hash)
+	},
+
+	setter({ commit }, { propertyName, value }) {
+		commit("setter", { propertyName, value })
 	},
 }
 
@@ -117,8 +157,8 @@ const mutations = {
 		state.imageIndex = state.imageIndex - 1
 	},
 
-	toggle(state) {
-		state.open = !state.open
+	toggle(state, propertyName) {
+		state[propertyName] = !state[propertyName]
 	},
 
 	setUploading(state, a) {
@@ -127,6 +167,10 @@ const mutations = {
 
 	setDeleteHash(state, hash) {
 		state.deletehash = hash
+	},
+
+	setter(state, { propertyName, value }) {
+		state[propertyName] = value
 	},
 }
 

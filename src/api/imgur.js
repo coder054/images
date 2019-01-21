@@ -51,6 +51,18 @@ export default {
 			},
 		})
 	},
+
+	async editTitleAndDesc(imageHash, title, description, token) {
+		return axios.post(
+			`${ROOT_URL}/3/image/${imageHash}`,
+			{ title, description },
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		)
+	},
 }
 
 export const name = "TUANANH"
