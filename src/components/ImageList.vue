@@ -99,7 +99,7 @@ export default {
 
 .img-list-wrapper img {
 	max-width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 1px;
 	border: 3px solid rgba(0,0,0,0);
 	border-radius: 4px;
 }

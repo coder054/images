@@ -73,6 +73,11 @@ const actions = {
 		// commit("setImageIndex", 0)
 		commit("setUploading", false)
 		router.push("/")
+		commit("setterr", {
+			propertyName: "notiContent",
+			value: "Upload Completed!",
+		})
+		commit("togglee", "showNoti")
 		// window.location.reload()
 	},
 
@@ -108,6 +113,11 @@ const actions = {
 		const { token } = rootState.auth
 		await api.deleteImage(imageHash, token)
 		commit("setDeleteHash", "")
+		commit("setterr", {
+			propertyName: "notiContent",
+			value: "Delete Successfuly!",
+		})
+		commit("togglee", "showNoti")
 		dispatch("fetchImages")
 	},
 
