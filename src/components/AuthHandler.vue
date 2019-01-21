@@ -1,5 +1,5 @@
 <template>
-  <div>AuthHandler</div>
+	<div>AuthHandler</div>
 </template>
 
 
@@ -11,11 +11,11 @@ import { mapActions } from 'vuex'
 
 
 export default {
-  name: 'AuthHandler',
-  methods: mapActions(['finalizeLogin']),
-  created() {
-    this.finalizeLogin(window.location.hash)
-  }
+	name: 'AuthHandler',
+	methods: mapActions(['finalizeLogin']),
+	created() {
+		this.finalizeLogin(window.location.hash)
+	}
 }
 
 </script>

@@ -80,11 +80,11 @@ export default {
 }
 
 .img-model-wr img{
-/*	max-width: 800px;
-	max-height: 400px;*/
+	max-width: 800px;
+	max-height: 400px;
 
-		max-width: 300px;
-	max-height: 150px;
+/*		max-width: 300px;
+	max-height: 150px;*/
 }
 
 .next-button, .prev-button{
